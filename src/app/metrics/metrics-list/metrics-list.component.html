@@ -1,0 +1,34 @@
+<h1 class="example-header">Metrics Data</h1>
+<form [formGroup]="metricsListForm" class="metricsListForm">
+  <div class="row form-group">
+    <div class="col-md-12" style="padding-left: 50px ">
+      <mat-form-field>
+        <input matInput placeholder="Search" width="100%" autocomplete="off" formControlName="search" autocomplete="off">
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+<div class="table-responsive">
+  <table class="table table-striped" style="border:1px solid #ddd">
+    <thead>
+      <tr class="table-header">
+        <th>Slice Name</th>
+        <th>Track</th>
+        <th>Calculate</th>
+        <th>Column</th>
+        <th>Group By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of pageMetrics">
+        <td>{{data.sliceName}}</td>
+        <td>{{data.track}}</td>
+        <td>{{data.calculate}}</td>
+        <td>{{data.column}}</td>
+        <td>{{data.groupBy}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<mat-paginator #paginator [length]="metricsList.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="setPaginator($event)">
+</mat-paginator>
